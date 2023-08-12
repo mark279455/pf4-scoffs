@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex flex-column align-items-center">
+    <h1>500 Server error</h1>
+    <p>It seems that we have a server issue</p>
+
+    <a href="{% url 'home' %}" class="btn button-style">Home</a>
+</div>
+{% endblock %}
