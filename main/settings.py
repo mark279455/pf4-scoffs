@@ -48,10 +48,12 @@ INSTALLED_APPS = [
 
     # Apps
     "home",
+    "bookings",
 
     #
     "crispy_forms",
     "crispy_bootstrap5",
+    "rangefilter",
 ]
 
 SITE_ID = 1
