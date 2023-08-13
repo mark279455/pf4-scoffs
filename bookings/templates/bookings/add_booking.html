@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'bookings/css/datepicker.css' %}">
-{% endblock %}
-
 {% block title %}Make a Booking{% endblock %}
 
 {% block content %}
@@ -21,14 +16,4 @@
         </div>
     </form>
 </div>
-{% endblock %}
-
-{% block extra_js %}
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<script>
-    $('.datepicker').datepicker();
-    document.write("datepicker");
-</script>
-
 {% endblock %}

@@ -2,10 +2,20 @@ from datetime import datetime
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django import forms
 from .models import Booking, Table
+from .widgets import DatePickerInput
 
 
 class BookingForm(forms.ModelForm):
     """ form to create a booking """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['booking_date'].widget = forms.widgets.DateInput(
+            attrs={
+                'type': 'date', 'placeholder': 'yyyy-mm-dd', 'class': 'form-control'
+            }
+        )
+
     class Meta:
         model = Booking
         fields = [
@@ -14,6 +24,9 @@ class BookingForm(forms.ModelForm):
             'booking_date',
             'booking_time'
         ]
+        widgets = {
+            'booking_date': DatePickerInput(),
+        }
         labels = {
             'cust_name': 'Name',
             'booking_party_size': 'Party Size',
@@ -27,6 +40,8 @@ class BookingForm(forms.ModelForm):
         throw errors when tables not available
         """
         date = self.cleaned_data['booking_date']
+        # date = forms.DateField(
+
         time = self.cleaned_data['booking_time']
         guests = self.cleaned_data['booking_party_size']
 
@@ -71,10 +86,3 @@ class BookingForm(forms.ModelForm):
                 )
         if not tables_with_capacity:
             raise ValidationError('No tables available for this date and time')
-
-
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['booking_date'].widget.attrs['class'] = 'datepicker'
-        self.fields['booking_date'].widget.attrs['autocomplete'] = 'off'
