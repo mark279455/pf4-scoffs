@@ -10,7 +10,7 @@ TIME_SLOTS = ((1, "13:00 - 15:00"), (2, "15:00 - 17:00"),
 class Table(models.Model):
     """ model for restaurant table """
     table_number = models.IntegerField(unique=True)
-    table_num_seats = models.IntegerField(choices=NUM_SEATS, default=4)
+    table_num_seats = models.IntegerField(choices=NUM_SEATS, default=2)
 
     class Meta:
         ordering = ['table_number']
@@ -29,13 +29,13 @@ class Booking(models.Model):
     booking_date = models.DateField()
     booking_time = models.IntegerField(choices=TIME_SLOTS, default=1)
     booking_table = models.ForeignKey(
-        Table, on_delete=models.CASCADE, related_name="booking_table")
+        Table, on_delete=models.CASCADE, related_name="table")
     timestamp_booking_made = models.DateTimeField(auto_now=True)
     booking_notes = models.CharField(max_length=1000, null=True)
 
     class Meta:
         """ Order by booking_date and then booking_time """
-        ordering = ['-booking_date', '-booking_time']
+        ordering = ['booking_date', 'booking_time']
 
     def __str__(self):
         return str(self.pk)

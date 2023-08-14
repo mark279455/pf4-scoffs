@@ -20,6 +20,9 @@
               <li class="nav-item">
                 <a class="nav-link {% if url_name == 'add_booking' %}active{% endif %}" href="{% url 'add_booking' %}">Make a Booking</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {% if url_name == 'list_bookings' %}active{% endif %}" href="{% url 'list_bookings' %}">List your Bookings</a>
+              </li>
               {% else %}
               <li class="nav-item">
                 <a class="nav-link {% if url_name == 'accounts_signup' %}active{% endif %}" href="/accounts/signup/">Register</a>
