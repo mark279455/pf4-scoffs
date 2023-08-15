@@ -16,6 +16,7 @@ import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 if os.path.exists('env.py'):
     import env
@@ -63,6 +64,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -185,3 +187,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # random image
 RANDOM_IMAGE_DIR = '.\images\homepage'
+
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
