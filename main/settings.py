@@ -14,12 +14,14 @@ from pathlib import Path
 import os
 import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 if os.path.exists('env.py'):
     import env
+
+DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -28,9 +30,14 @@ if os.path.exists('env.py'):
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "DEVELOPMENT" in os.environ
+DEBUG = DEVELOPMENT
 
-ALLOWED_HOSTS = ["127.0.0.1:8000", "127.0.0.1:8001", "pf4-scoffs-2c918dbf1aba.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", os.environ.get('HEROKU_HOSTNAME')"]
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 # Application definition
 
@@ -59,8 +66,10 @@ INSTALLED_APPS = [
     "random_image_from_folder",
 ]
 
-
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -73,17 +82,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-if DEBUG:
-    INTERNAL_IPS = [
-        "127.0.0.1",
-    ]
-    INSTALLED_APPS.append("debug_toolbar")
-    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
+ROOT_URLCONF = "main.urls"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-ROOT_URLCONF = "main.urls"
 
 TEMPLATES = [
     {
@@ -108,16 +111,14 @@ TEMPLATES = [
     },
 ]
 
-
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
 WSGI_APPLICATION = "main.wsgi.application"
 
+if DEBUG:
+    INTERNAL_IPS = [
+        "127.0.0.1",
+    ]
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -152,6 +153,28 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Account setup allauth
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_MIN_LENGTH = 6
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'test@test.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -163,21 +186,21 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Account setup allauth
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_USERNAME_MIN_LENGTH = 6
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
