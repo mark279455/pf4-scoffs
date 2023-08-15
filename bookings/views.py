@@ -21,7 +21,7 @@ class AddBookingView(LoginRequiredMixin, CreateView):
     success_url = '/bookings/'
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.cust = self.request.user
         """
         Before form submission, assign table with lowest capacity
         needed for booking guests
@@ -58,8 +58,6 @@ class AddBookingView(LoginRequiredMixin, CreateView):
             self.request,
             f'Booking confirmed for {party_size} on {date}'
         )
-        form.instance.cust = self.request.user
-        # print(f"self.request.user.id: {self.request.user.id}")
-        # print(f"lowest_capacity_table:      id = {lowest_capacity_table.id}")
-        # print(f"form.instance.booking_table: id = {form.instance.booking_table.id}")
         return super(AddBookingView, self).form_valid(form)
+
+

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "rangefilter",
     "debug_toolbar",
+    "random_image_from_folder",
 ]
 
 SITE_ID = 1
@@ -173,3 +174,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# random image
+RANDOM_IMAGE_DIR = '.\images\homepage'

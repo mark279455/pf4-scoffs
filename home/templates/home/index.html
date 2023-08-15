@@ -1,1 +1,68 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-wrapper">
+    <div class="homepage-img">
+        <div class="imgwrap">
+            {% load random_image %}
+            <img src="{{ MEDIA_URL }}{% random_image %}" alt="restaurant image">
+        </div>
+    </div>
+    <div class="content-wrapper main-column">
+        <div class="text-area content">
+            <!-- Title and about us sections -->
+            <h1 class="text-center welcome">Welcome to Scoff's.</h1>
+            <div class="text-center welcome">
+                <p>Our restaurant is a beautifully renovated listed building with high gabled ceilings and a wonderful
+                    ambience.
+                    Join us for the freshest, most delicious steak, fish and shellfish in this stunning setting.</p>
+                <p>
+                    We have outdoor seating for 50, a separate bar area and a fish counter in the restaurant selling
+                    fresh and smoked fish and a range of delicatessen products.
+                </p>
+                <p>
+                    For a first rate à la carte menu filled with seasonal and fresh dishes, come and visit Scoff's
+                    restaurant today.
+                    Great food and a welcoming atmosphere.
+                </p>
+
+                <!-- Booking and menu buttons -->
+                <!-- <div class="d-grid gap-2 col-6 mb-3 mx-auto"> -->
+                <div>
+                    <button type="button" class="btn btn-primary">Make a Reservation</button>
+                </div>
+
+                <!-- <h2 class="text-center">Find Us</h2> -->
+                <!-- Map -->
+                <!-- <div class="mapouter pb-3">
+                    <div class="gmap_canvas">
+                        <iframe id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=torr%20head&t=&z=13&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div> -->
+                <!-- Opening hours -->
+                <!-- <div class="opening text-center form-style">
+                        <p><strong>Lunch Opening Times</strong></p>
+                        <ul>
+                            <li>Monday to Saturday 12pm – 3.45pm</li>
+                            <li>Sunday 12pm - 4pm</li>
+                        </ul>
+                        <p><strong>Dining Opening Times</strong></p>
+                        <ul>
+                            <li>Monday 4pm - 10pm</li>
+                            <li>Tuesday 4pm - 10pm</li>
+                            <li>Wednesday 4pm - 10pm</li>
+                            <li>Thursday 4pm - 10pm</li>
+                            <li>Friday 4pm - 10pm</li>
+                            <li>Saturday 4pm - 10pm</li>
+                            <li>Sunday 4pm - 10pm</li>
+                        </ul>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{%endblock%}
