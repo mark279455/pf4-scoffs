@@ -75,10 +75,10 @@
                     </td>
                     {% endif %}
                     <td>
-                        <a href="" class="btn button-style m-2">Edit</a>
+                        <a href="{% url 'edit_booking' booking.id %}" class="btn button-style m-2">Edit</a>
                     </td>
                     <td>
-                        <a href="" class="btn button-style m-2">Delete</a>
+                        <a href="{% url 'delete_booking' booking.id %}" class="btn button-style m-2">Delete</a>
                     </td>
                 </tr>
             </tbody>

@@ -1,9 +1,29 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from datetime import timedelta, date
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from .models import Booking, Table
 from .forms import BookingForm
+
+
+class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """ Delete Booking """
+    model = Booking
+    success_url = '/bookings/'
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user == self.get_object().cust
+
+
+class EditBookingView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """" Edit Booking """
+    template_name = 'bookings/edit_booking.html'
+    model = Booking
+    success_url = '/bookings/'
+    form_class = BookingForm
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user == self.get_object().cust
 
 
 class ListBookingView(LoginRequiredMixin, ListView):
@@ -59,5 +79,3 @@ class AddBookingView(LoginRequiredMixin, CreateView):
             f'Booking confirmed for {party_size} on {date}'
         )
         return super(AddBookingView, self).form_valid(form)
-
-
