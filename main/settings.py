@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DEVELOPMENT
+DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", os.environ.get('HEROKU_HOSTNAME')]
+ALLOWED_HOSTS = ["127.0.0.1", os.environ.get('HEROKU_HOSTNAME'), '8000-mark279455-pf4scoffs-7j4czffsq61.ws-eu103.gitpod.io']
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
