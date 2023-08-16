@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap');
+
+:root {
+    /* Fonts */
+    --title: Montserrat, sans-serif;
+    --main-font: Ubuntu, sans-serif;
+
+    /* colours */
+    --background: #67717a;
+    --blue: #436175;
+    --bootstrap_blue: #0d6efd;
+    --yellow: #FFD700;
+    --off-white: #f0f0f0;
+    --white: #fff;
+    --black: #000;
+    --green: yellowgreen;
+
+    /* utils */
+    --border: 1px solid #000;
+    --small-box-shadow: 1px -1px 7px 0 #000;
+}
+
+html,
+body {
+    height: 100%;
+    color: var(--yellow);
+    background-color: var(--background);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title);
+}
+
+main {
+    flex: 1 0 auto;
+    background-color: var(--blue);
+}
+
+/* Header */
+.navbar {
+    /* height: 4rem; */
+    background-color: var(--blue);
+    /* box-shadow: var(--small-box-shadow); */
+    color: var(--yellow);
+}
+
+.container-fluid {
+    background-color: var(--blue);
+}
+
+a.nav-link {
+    /* color: var(--black); */
+    color: var(--yellow);
+}
+
+img.logo {
+    width: 15rem;
+    height: 8rem;
+}
+
+.active {
+    border-bottom: 2px solid var(--blue);
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background-color: var(--blue);
+    border-top: var(--border);
+    max-height: 120px;
+}
+
+#footer-items {
+    display: flex;
+}
+
+.address {
+    align-self: flex-start;
+    width: 100%;
+}
+
+.address p {
+    font-size: 0.8rem;
+    /* font-weight: bold; */
+    margin-bottom: 0;
+    padding-left: 0.5rem;
+}
+
+.social {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-content: center;
+}
+
+.social-icon {
+    height: 2rem;
+    margin: 1rem;
+}
+
+.homepage-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgwrap {
+    width: 80%;
+    margin: auto;
+}
+
+.imgwrap img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    max-height: 400px;
+    height: auto;
+    margin: auto;
+}
+
+.welcome {
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.welcome p {
+    padding: 0.5rem 1rem;
+}
+
+/* Form */
+
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--smal-box-shadow);
+    border-radius: 5px;
+}
+
+
