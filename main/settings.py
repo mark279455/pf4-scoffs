@@ -64,7 +64,6 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "rangefilter",
     "random_image_from_folder",
-    # "debug_toolbar",
 ]
 
 SITE_ID = 1
@@ -81,7 +80,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "main.urls"
@@ -114,10 +112,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "main.wsgi.application"
-
-INTERNAL_IPS = [
-        "127.0.0.1",
-]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -189,7 +183,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -210,7 +204,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 RANDOM_IMAGE_DIR = '.\images\homepage'
 
 STORAGES = {
-    # ...
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },

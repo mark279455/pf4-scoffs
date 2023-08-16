@@ -22,5 +22,4 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path("", include("home.urls")),
     path('bookings/', include("bookings.urls")),
-    path('__debug__/', include('debug_toolbar.urls')),
 ]
