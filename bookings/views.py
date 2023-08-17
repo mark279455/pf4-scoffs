@@ -9,7 +9,7 @@ from .forms import BookingForm
 class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ Delete Booking """
     model = Booking
-    success_url = '/bookings/'
+    success_url = '/bookings/list_bookings/'
 
     def test_func(self):
         return self.request.user.is_staff or self.request.user == self.get_object().cust
@@ -19,7 +19,7 @@ class EditBookingView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """" Edit Booking """
     template_name = 'bookings/edit_booking.html'
     model = Booking
-    success_url = '/bookings/'
+    success_url = '/bookings/list_bookings/'
     form_class = BookingForm
 
     def test_func(self):
@@ -38,7 +38,7 @@ class AddBookingView(LoginRequiredMixin, CreateView):
     template_name = 'bookings/add_booking.html'
     model = Booking
     form_class = BookingForm
-    success_url = '/bookings/'
+    success_url = '/bookings/list_bookings/'
 
     def form_valid(self, form):
         form.instance.cust = self.request.user
