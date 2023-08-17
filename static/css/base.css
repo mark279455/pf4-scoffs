@@ -60,18 +60,12 @@ main {
 }
 
 a.nav-link {
-    /* color: var(--black); */
     color: var(--yellow);
 }
 
 img.logo {
     width: 15rem;
     height: 8rem;
-}
-
-.active {
-    border-bottom: 2px solid var(--blue);
-    font-weight: 500;
 }
 
 /* Footer */
