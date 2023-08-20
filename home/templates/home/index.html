@@ -12,8 +12,8 @@
     <div class="content-wrapper main-column">
         <div class="text-area content">
             <!-- Title and about us sections -->
-            <h1 class="text-center welcome">Welcome to Scoff's.</h1>
-            <div class="text-center welcome">
+            <h1 class="text-center fw-bolder display-1">Welcome to Scoff's.</h1>
+            <div class="text-center fw-bold px-2 pb-3">
                 <p>Our restaurant is a beautifully renovated listed building with high gabled ceilings and a wonderful
                     ambience.
                     Join us for the freshest, most delicious steak, fish and shellfish in this stunning setting.</p>
@@ -30,7 +30,7 @@
                 <!-- Booking and menu buttons -->
                 <!-- <div class="d-grid gap-2 col-6 mb-3 mx-auto"> -->
                 <div>
-                    <button type="button" class="btn btn-warning">Make a Reservation</button>
+                    <button onclick="document.location.href='{% url 'add_booking' %}';" class="btn btn-danger w-20" type="button">Book a Table</button>
                 </div>
 
                 <!-- <h2 class="text-center">Find Us</h2> -->

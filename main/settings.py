@@ -246,3 +246,8 @@ if DEVELOPMENT:
             },
         }
     }
+
+if os.path.exists('mrc.py'):
+    print("mrc.py exists")
+    import mrc
+

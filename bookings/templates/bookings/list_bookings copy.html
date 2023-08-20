@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'booking/css/booking.css' %}">
+{% endblock %}
+
+
+{% block title %}Bookings{% endblock %}
+
+{% block content %}
+
+<div class="container m-3">
+    <!-- Search querys -->
+    {% if request.user.is_staff %}
+    <form method='GET' class="mb-3">
+        <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off"
+            aria-label="Search Booking by reference" placeholder="Search Booking Ref">
+        <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref"
+            aria-label="Click to search by booking ref">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    <form method='GET' class="mb-3">
+        <input type='text' name='d' value='{{ request.GET.d }}' class="datepicker" autocomplete="off"
+            aria-label="Search Bookings by date" placeholder="Search Booking Date">
+        <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref"
+            aria-label="Click to search by date">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    {% endif %}
+    <!-- Manage bookings table -->
+
+    <div class="container-fluid">
+        <div class="row">
+            </div class="col-sm-12 col-md-10 col-lg-8 mb-3 mb-sm-0 mx-0">
+                {% for booking in object_list %}
+                <div class="card my-1 ms-sm-1 mx-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Date: {{ booking.booking_date }}</h5>
+                        <p class="card-text">Time: {{ booking.get_booking_time_display }}</p>
+                        <p class="card-text">Ref: {{ booking.pk }}</p>
+                        <p class="card-text">Party Of {{ booking.booking_party_size }}</p>
+                        <p class="card-text">Name: {{ booking.cust_name }}</p>
+                        {% if user.is_staff %}
+                        <p class="card-text">Table: {{ booking.booking_table }}</p>
+                        <p class="card-text">Capacity: {{ booking.booking_table.table_num_seats }}</p>
+                        {% endif %}
+                        <a href="{% url 'edit_booking' booking.id %}" class="btn btn-danger w-35 m-2">Edit</a>
+                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-primary w-35  m-2">Delete</a>
+
+                        <!-- <a href="#" class="btn btn-success w-25 me-2">Edit</a>
+                        <a href="#" class="btn btn-primary w-25">Delete</a> -->
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+    {% block extra_js %}
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script>
+        $('.datepicker').datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+    </script>
+    {% endblock %}

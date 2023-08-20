@@ -6,8 +6,9 @@
     --main-font: Ubuntu, sans-serif;
 
     /* colours */
-    --background: #67717a;
-    --blue: #436175;
+    /* --background: #67717a; */
+    --background: #C2B280;
+    --deftextcolor: #436175;
     --bootstrap_blue: #0d6efd;
     --yellow: #FFD700;
     --off-white: #f0f0f0;
@@ -23,7 +24,7 @@
 html,
 body {
     height: 100%;
-    color: var(--yellow);
+    color: var(--deftextcolor);
     background-color: var(--background);
 }
 
@@ -44,24 +45,33 @@ h6 {
 
 main {
     flex: 1 0 auto;
-    background-color: var(--blue);
+    background-color: var(--background);
+}
+
+.btn-danger {
+    background-color: var(--deftextcolor);
+    border: var(--border);
+}
+
+.btn-success {
+    background-color: var(--background);
+    border: var(--border);
 }
 
 /* Header */
 .navbar {
     /* height: 4rem; */
-    background-color: var(--blue);
+    background-color: var(--background);
     /* box-shadow: var(--small-box-shadow); */
-    color: var(--yellow);
+    color: var(--deftextcolor);
 }
 
 .container-fluid {
-    background-color: var(--blue);
+    background-color: var(--background);
 }
 
 a.nav-link {
-    /* color: var(--black); */
-    color: var(--yellow);
+    color: var(--deftextcolor);
 }
 
 img.logo {
@@ -69,14 +79,9 @@ img.logo {
     height: 8rem;
 }
 
-.active {
-    border-bottom: 2px solid var(--blue);
-    font-weight: 500;
-}
-
 /* Footer */
 footer {
-    background-color: var(--blue);
+    background-color: var(--background);
     border-top: var(--border);
     max-height: 120px;
 }
@@ -109,6 +114,7 @@ footer {
     margin: 1rem;
 }
 
+/* homepage */
 .homepage-img {
     display: flex;
     align-items: center;
@@ -129,14 +135,14 @@ footer {
     margin: auto;
 }
 
-.welcome {
+/* .welcome {
     padding: 1rem 2rem;
     text-align: center;
 }
 
 .welcome p {
     padding: 0.5rem 1rem;
-}
+} */
 
 /* Form */
 
@@ -147,4 +153,52 @@ footer {
     border-radius: 5px;
 }
 
+/* booking card */
+.card {
+    background-color: var(--background)!important;
+    /* border: var(--border): */
+}
 
+/********************************************/
+.custom-card {
+    border: var(--border);
+    background-color: var(--background);
+    color: var(--deftextcolor);
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    /* justify-content: space-between; */
+}
+
+.custom-card button {
+    border-style: solid;
+    background-color: var(--deftextcolor);
+    color: var(--off-white);
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttondiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.buttondiv .editbutton {
+    background-color: var(--deftextcolor);
+}
+
+.buttondiv .deletebutton {
+    background-color: var(--background);
+    color: var(--deftextcolor);
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}

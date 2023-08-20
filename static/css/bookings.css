@@ -1,0 +1,74 @@
+:root {
+    /* Fonts */
+    --title: Montserrat, sans-serif;
+    --main-font: Ubuntu, sans-serif;
+
+    /* colours */
+    /* --background: #67717a; */
+    --background: #C2B280;
+    --deftextcolor: #436175;
+    --bootstrap_blue: #0d6efd;
+    --yellow: #FFD700;
+    --off-white: #f0f0f0;
+    --white: #fff;
+    --black: #000;
+    --green: yellowgreen;
+
+    /* utils */
+    --border: 1px solid #000;
+    --small-box-shadow: 1px -1px 7px 0 #000;
+}
+
+html,
+body {
+    height: 100%;
+    color: var(--deftextcolor);
+    background-color: var(--background);
+}
+
+p {
+    color: var(--deftextcolor);
+}
+
+.custom-card {
+    border: var(--border);
+    background-color: var(--background);
+    color: var(--deftextcolor);
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    /* justify-content: space-between; */
+}
+
+.custom-card button {
+    border-style: solid;
+    background-color: var(--deftextcolor);
+    color: var(--off-white);
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttondiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.buttondiv .editbutton {
+    background-color: var(--deftextcolor);
+}
+
+.buttondiv .deletebutton {
+    background-color: var(--background);
+    color: var(--deftextcolor);
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
