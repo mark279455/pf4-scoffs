@@ -1,9 +1,12 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from datetime import timedelta, date
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from .models import Booking, Table
 from .forms import BookingForm
+from django.db.models import Q
 
 
 class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -31,6 +34,29 @@ class ListBookingView(LoginRequiredMixin, ListView):
     template_name = 'bookings/list_bookings.html'
     model = Booking
     context_object_name = 'list_bookings'
+
+    def get_queryset(self):
+        """ Queryset function for manage booking search """
+        query = self.request.GET.get('ref')
+        dates = self.request.GET.get('date')
+        names = self.request.GET.get('name')
+        if names:
+            return Booking.objects.filter(Q(cust_name__iregex=names))
+        if query:
+            return Booking.objects.filter(id=query)
+        if dates:
+            return Booking.objects.filter(booking_date=dates)
+        if self.request.user.is_staff:
+            # bookings today or later
+            return Booking.objects.filter(
+                booking_date__gte=(date.today())
+            )
+        else:
+            # this customers bookings today or later
+            return Booking.objects.filter(
+                cust=self.request.user,
+                booking_date__gte=(date.today())
+            )
 
 
 class AddBookingView(LoginRequiredMixin, CreateView):

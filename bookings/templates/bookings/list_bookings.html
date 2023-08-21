@@ -4,38 +4,42 @@
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static '/css/bookings.css' %}">
-
 {% endblock %}
 
 {% block title %}Bookings{% endblock %}
 
 {% block content %}
+<p>{{request.user}}</p>
+
 <div class="container mx-0 p-0">
     <!-- Search querys -->
+
     {% if request.user.is_staff %}
-    <form method='GET' class="mb-3">
-        <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off"
-            aria-label="Search Booking by reference" placeholder="Search Booking Ref">
-        <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref"
-            aria-label="Click to search by booking ref">
-            <i class="fas fa-search"></i>
-        </button>
+    <form method='GET' class="d-flex">
+        <input class="form-control me-2 w-auto p-1 m-1" type="text" name='name' placeholder="Name"
+            aria-label="Search Booking by Name" value='{{ request.GET.name }}' autocomplete="off">
+        <button class="btn btn-danger h-50" type="submit">Search</button>
     </form>
-    <form method='GET' class="mb-3">
-        <input type='text' name='d' value='{{ request.GET.d }}' class="datepicker" autocomplete="off"
-            aria-label="Search Bookings by date" placeholder="Search Booking Date">
-        <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref"
-            aria-label="Click to search by date">
-            <i class="fas fa-search"></i>
-        </button>
+
+    <form method='GET' class="d-flex">
+        <input class="form-control me-2 w-auto p-1 m-1" type='text' name='ref' placeholder="Ref"
+            aria-label="Search Booking by reference" value='{{ request.GET.ref }}' autocomplete="off">
+        <button class="btn btn-danger h-50" type="submit">Search</button>
     </form>
     {% endif %}
-    <!-- Manage bookings table -->
 
+    <form method='GET' class="d-flex">
+        <input class="form-control me-2 w-auto p-1 m-1" type='date' name='date' placeholder="Date"
+            aria-label="Search Bookings by date" value='{{ request.GET.date }}' autocomplete="off" class="datepicker"
+            id="datepicker" type="submit"> <button class="btn btn-danger h-50" type="submit">Search</button>
+    </form>
+
+    <!-- Manage bookings table -->
     <div class="card-container px-0 m-0">
 
         {% for booking in object_list %}
 
+        {% if request.user.is_staff or request.user == booking.cust %}
         <div class="custom-card m-1 p-0">
             <div class="card-row">
                 <p class="ms-1 mt-1 mb-0 fw-bold">Date:</p>
@@ -57,7 +61,7 @@
                 <p class="ms-1 mt-1 mb-0 fw-bold">Name:</p>
                 <button class="m-1 w-50">{{ booking.cust_name }}</button>
             </div>
-            {% if user.is_staff %}
+            {% if request.user.is_staff %}
             <div class="card-row">
                 <p class="ms-1 mt-1 mb-0 fw-bold">Table:</p>
                 <button class="m-1 w-50">{{ booking.booking_table }}</button>
@@ -68,21 +72,22 @@
             </div>
             {% endif %}
             <div class="buttondiv my-2 fw-bold">
-                <button onclick="document.location.href='{% url 'edit_booking' booking.id %}';" class="editbutton w-30 fw-bold" href="{% url 'edit_booking' booking.id %}">Edit</button>
-                <button onclick="document.location.href='{% url 'delete_booking' booking.id %}';" class="deletebutton w-30 fw-bold" href="{% url 'delete_booking' booking.id %}">Delete</button>
+                <button onclick="document.location.href='{% url 'edit_booking' booking.id %}';"
+                    class="editbutton w-30 fw-bold">Edit</button>
+                <button onclick="document.location.href='{% url 'delete_booking' booking.id %}';"
+                    class="deletebutton w-30 fw-bold">Delete</button>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
 
 {% endblock %}
 {% block extra_js %}
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script>
-    $('.datepicker').datepicker({
-        dateFormat: 'yy-mm-dd',
+    $(function () {
+        $('#datepicker').datepicker();
     });
 </script>
 {% endblock %}

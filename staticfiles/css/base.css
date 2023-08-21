@@ -53,7 +53,17 @@ main {
     border: var(--border);
 }
 
+.btn-danger:hover {
+    background-color: var(--deftextcolor);
+    border: var(--border);
+}
+
 .btn-success {
+    background-color: var(--background);
+    border: var(--border);
+}
+
+.btn-success:hover {
     background-color: var(--background);
     border: var(--border);
 }
@@ -155,7 +165,7 @@ footer {
 
 /* booking card */
 .card {
-    background-color: var(--background)!important;
+    background-color: var(--background) !important;
     /* border: var(--border): */
 }
 
