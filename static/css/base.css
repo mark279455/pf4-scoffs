@@ -89,6 +89,15 @@ img.logo {
     height: 8rem;
 }
 
+.text-info {
+    background-color: var(--deftextcolor);
+    color: var(--off-white);
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: var(--off-white)!important;
+}
+
 /* Footer */
 footer {
     background-color: var(--background);
