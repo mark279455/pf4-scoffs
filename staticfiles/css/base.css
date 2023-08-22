@@ -222,3 +222,19 @@ footer {
     color: var(--deftextcolor);
 }
 
+.toasts {
+    /* position: fixed;
+    top: 127px;
+    right: 0px;
+    z-index: 99999999999; */
+    width: 400px;
+}
+
+.toasts .toast {
+    background: var(--deftextcolor);
+    color: var(--off-white);
+}
+
+.toast-body {
+    font-size: 1rem;
+}

@@ -14,6 +14,10 @@ class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Booking
     success_url = '/bookings/list_bookings/'
 
+    def form_valid(self, form):
+        messages.success(self.request, 'Booking deleted.')
+        return super(DeleteBookingView, self).form_valid(form)
+
     def test_func(self):
         return self.request.user.is_staff or self.request.user == self.get_object().cust
 
@@ -25,6 +29,40 @@ class EditBookingView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     success_url = '/bookings/list_bookings/'
     form_class = BookingForm
 
+    def form_valid(self, form):
+        form.instance.cust = self.request.user
+        """
+        find the smallest free table for this party
+        """
+        date = form.cleaned_data['booking_date']
+        time = form.cleaned_data['booking_time']
+        party_size = form.cleaned_data['booking_party_size']
+        # get tables big enough for party
+        suitable_tables = list(Table.objects.filter(
+            table_num_seats__gte=party_size
+        ))
+
+        # get the booking for that day
+        bookings_on_date = Booking.objects.filter(
+            booking_date=date, booking_time=time)
+
+        # find free tables
+        for booking in bookings_on_date:
+            for table in suitable_tables:
+                if table.table_number == booking.booking_table.table_number:
+                    suitable_tables.remove(table)
+                    break
+
+        # get smallest free table for this booking
+        smallest_suitable_table = suitable_tables[0]
+        for table in suitable_tables:
+            if table.table_num_seats < smallest_suitable_table.table_num_seats:
+                smallest_suitable_table = table
+        form.instance.booking_table = smallest_suitable_table
+
+        messages.success(self.request, 'Booking updated.')
+        return super(EditBookingView, self).form_valid(form)
+    
     def test_func(self):
         return self.request.user.is_staff or self.request.user == self.get_object().cust
 
@@ -69,36 +107,33 @@ class AddBookingView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.cust = self.request.user
         """
-        Before form submission, assign table with lowest capacity
-        needed for booking guests
+        find the smallest free table for this party
         """
         date = form.cleaned_data['booking_date']
         time = form.cleaned_data['booking_time']
         party_size = form.cleaned_data['booking_party_size']
-        # Filter tables with capacity greater or equal
-        # to the number of guests
-        tables_with_capacity = list(Table.objects.filter(
+        # get tables big enough for party
+        suitable_tables = list(Table.objects.filter(
             table_num_seats__gte=party_size
         ))
 
-        # Get bookings on specified date
-        bookings_on_requested_date = Booking.objects.filter(
+        # get the booking for that day
+        bookings_on_date = Booking.objects.filter(
             booking_date=date, booking_time=time)
 
-        # Iterate over bookings to get tables not booked
-        for booking in bookings_on_requested_date:
-            for table in tables_with_capacity:
+        # find free tables
+        for booking in bookings_on_date:
+            for table in suitable_tables:
                 if table.table_number == booking.booking_table.table_number:
-                    tables_with_capacity.remove(table)
+                    suitable_tables.remove(table)
                     break
 
-        # Iterate over tables not booked to get lowest
-        # capacity table to assign to booking
-        lowest_capacity_table = tables_with_capacity[0]
-        for table in tables_with_capacity:
-            if table.table_num_seats < lowest_capacity_table.table_num_seats:
-                lowest_capacity_table = table
-        form.instance.booking_table = lowest_capacity_table
+        # get smallest free table for this booking
+        smallest_suitable_table = suitable_tables[0]
+        for table in suitable_tables:
+            if table.table_num_seats < smallest_suitable_table.table_num_seats:
+                smallest_suitable_table = table
+        form.instance.booking_table = smallest_suitable_table
 
         messages.success(
             self.request,

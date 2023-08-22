@@ -9,26 +9,41 @@
     <div class="d-flex justify-content-center pt-3">
         <form method='post' class="text-center">
             {% csrf_token %}
-            <table class="table table-striped-columns table-bordered p-20">
-                <thead>
-                    <tr>
-                        <th class="px-5" scope="col">Ref</th>
-                        <th class="px-5" scope="col">Name</th>
-                        <th class="px-5" scope="col">Date</th>
-                        <th class="px-5" scope="col">Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">{{object.id}}</th>
-                        <td>{{object.cust_name}}</td>
-                        <td>{{object.booking_date}}</td>
-                        <td>{{object.get_booking_time_display}}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <input type="submit" value="Confirm" class="btn btn-danger w-20">
+            <div class="card-container px-2 m-0">
+                <div class="custom-card m-1 p-0">
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Date:</p>
+                        <button class="m-1 w-50">{{ booking.booking_date }}</button>
+                    </div>
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Time:</p>
+                        <button class="m-1 w-50">{{ booking.get_booking_time_display }}</button>
+                    </div>
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Ref:</p>
+                        <button class="m-1 w-50">{{ booking.pk }}</button>
+                    </div>
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Party of:</p>
+                        <button class="m-1 w-50">{{ booking.booking_party_size }}</button>
+                    </div>
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Name:</p>
+                        <button class="m-1 w-50">{{ booking.cust_name }}</button>
+                    </div>
+                    {% if request.user.is_staff %}
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Table:</p>
+                        <button class="m-1 w-50">{{ booking.booking_table }}</button>
+                    </div>
+                    <div class="card-row">
+                        <p class="ms-1 mt-1 mb-0 fw-bold">Capacity:</p>
+                        <button class="m-1 w-50">{{ booking.booking_table.table_num_seats }}</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <input type="submit" value="Confirm" class="btn btn-danger w-50 px-5">
         </form>
     </div>
 </div>
