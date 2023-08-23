@@ -1,33 +1,21 @@
-:root {
-    /* Fonts */
-    --title: Montserrat, sans-serif;
-    --main-font: Ubuntu, sans-serif;
-
-    /* colours */
-    /* --background: #67717a; */
-    --background: #C2B280;
-    --deftextcolor: #436175;
-    --bootstrap_blue: #0d6efd;
-    --yellow: #FFD700;
-    --off-white: #f0f0f0;
-    --white: #fff;
-    --black: #000;
-    --green: yellowgreen;
-
-    /* utils */
-    --border: 1px solid #000;
-    --small-box-shadow: 1px -1px 7px 0 #000;
+/* form */
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--smal-box-shadow);
+    border-radius: 5px;
 }
 
-html,
-body {
-    height: 100%;
-    color: var(--deftextcolor);
-    background-color: var(--background);
+/* booking card  on list bookings view */
+.card {
+    background-color: var(--background) !important;
 }
 
-p {
-    color: var(--deftextcolor);
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .custom-card {
@@ -37,7 +25,6 @@ p {
     display: flex;
     flex-direction: column;
     width: 25rem;
-    /* justify-content: space-between; */
 }
 
 .custom-card button {
@@ -57,18 +44,31 @@ p {
     justify-content: space-around;
 }
 
-.buttondiv .editbutton {
+.custom-card .buttondiv .editbutton {
     background-color: var(--deftextcolor);
 }
 
-.buttondiv .deletebutton {
+.custom-card .buttondiv .deletebutton {
     background-color: var(--background);
     color: var(--deftextcolor);
 }
 
-.card-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+/* confirmation messages - toasts */
+.toasts {
+    width: 400px;
+}
+
+.toasts .toast {
+    background: var(--deftextcolor);
+    color: var(--off-white);
+}
+
+.toast-body {
+    font-size: 1rem;
+}
+
+/* override bootstrap btn-danger */
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+    background-color: var(--deftextcolor) !important;
+    border: none !important;
 }

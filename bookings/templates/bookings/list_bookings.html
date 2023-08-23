@@ -3,7 +3,7 @@
 
 {% block css %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static '/css/bookings.css' %}">
+<link rel="stylesheet" href="{% static '/bookings/css/bookings.css' %}">
 {% endblock %}
 
 {% block title %}Bookings{% endblock %}
@@ -12,29 +12,28 @@
 <p>{{request.user}}</p>
 
 <div class="container mx-0 p-0">
-    <!-- Search querys -->
-
+    <!-- Searches -->
     {% if request.user.is_staff %}
     <form method='GET' class="d-flex">
         <input class="form-control me-2 w-auto p-1 m-1" type="text" name='name' placeholder="Name"
             aria-label="Search Booking by Name" value='{{ request.GET.name }}' autocomplete="off">
-        <button class="btn btn-danger h-50" type="submit">Search</button>
+        <button class="btn btn-danger p-1 m-1" type="submit">Search</button>
     </form>
 
     <form method='GET' class="d-flex">
         <input class="form-control me-2 w-auto p-1 m-1" type='text' name='ref' placeholder="Ref"
             aria-label="Search Booking by reference" value='{{ request.GET.ref }}' autocomplete="off">
-        <button class="btn btn-danger h-50" type="submit">Search</button>
+        <button class="btn btn-danger p-1 m-1" type="submit">Search</button>
     </form>
     {% endif %}
 
     <form method='GET' class="d-flex">
         <input class="form-control me-2 w-auto p-1 m-1" type='date' name='date' placeholder="Date"
             aria-label="Search Bookings by date" value='{{ request.GET.date }}' autocomplete="off" class="datepicker"
-            id="datepicker" type="submit"> <button class="btn btn-danger h-50" type="submit">Search</button>
+            id="datepicker" type="submit"> <button class="btn btn-danger p-1 m-1" type="submit">Search</button>
     </form>
 
-    <!-- Manage bookings table -->
+    <!-- bookings cards -->
     <div class="card-container px-0 m-0">
 
         {% for booking in object_list %}

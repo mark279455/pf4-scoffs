@@ -48,31 +48,9 @@ main {
     background-color: var(--background);
 }
 
-.btn-danger {
-    background-color: var(--deftextcolor);
-    border: var(--border);
-}
-
-.btn-danger:hover {
-    background-color: var(--deftextcolor);
-    border: var(--border);
-}
-
-.btn-success {
-    background-color: var(--background);
-    border: var(--border);
-}
-
-.btn-success:hover {
-    background-color: var(--background);
-    border: var(--border);
-}
-
 /* Header */
 .navbar {
-    /* height: 4rem; */
     background-color: var(--background);
-    /* box-shadow: var(--small-box-shadow); */
     color: var(--deftextcolor);
 }
 
@@ -154,31 +132,21 @@ footer {
     margin: auto;
 }
 
-/* .welcome {
-    padding: 1rem 2rem;
-    text-align: center;
-}
+/* bookings app */
 
-.welcome p {
-    padding: 0.5rem 1rem;
-} */
-
-/* Form */
-
-.form {
+/* form */
+/* .form {
     width: 100%;
     margin: 3% auto;
     box-shadow: var(--smal-box-shadow);
     border-radius: 5px;
-}
+} */
 
-/* booking card */
-.card {
+/* booking card  on list bookings view */
+/* .card {
     background-color: var(--background) !important;
-    /* border: var(--border): */
 }
 
-/********************************************/
 .card-container {
     display: flex;
     flex-direction: row;
@@ -193,7 +161,6 @@ footer {
     display: flex;
     flex-direction: column;
     width: 25rem;
-    /* justify-content: space-between; */
 }
 
 .custom-card button {
@@ -213,20 +180,17 @@ footer {
     justify-content: space-around;
 }
 
-.buttondiv .editbutton {
+.custom-card .buttondiv .editbutton {
     background-color: var(--deftextcolor);
 }
 
-.buttondiv .deletebutton {
+.custom-card .buttondiv .deletebutton {
     background-color: var(--background);
     color: var(--deftextcolor);
-}
+} */
 
-.toasts {
-    /* position: fixed;
-    top: 127px;
-    right: 0px;
-    z-index: 99999999999; */
+/* confirmation messages - toasts */
+/* .toasts {
     width: 400px;
 }
 
@@ -237,4 +201,10 @@ footer {
 
 .toast-body {
     font-size: 1rem;
-}
+} */
+
+/* override bootstrap btn-danger */
+/* .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+    background-color: var(--deftextcolor) !important;
+    border: none !important;
+} */

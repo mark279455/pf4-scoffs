@@ -189,7 +189,11 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# os.path.join(BASE_DIR, 'bookings\static\bookings\css'),
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -246,8 +250,3 @@ if DEVELOPMENT:
             },
         }
     }
-
-if os.path.exists('mrc.py'):
-    print("mrc.py exists")
-    import mrc
-
