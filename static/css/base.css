@@ -137,3 +137,17 @@ footer {
     background-color: var(--deftextcolor) !important;
     border: none !important;
 }
+
+/* confirmation messages - toasts */
+.toasts {
+    width: 400px;
+}
+
+.toasts .toast {
+    background: var(--deftextcolor);
+    color: var(--off-white);
+}
+
+.toast-body {
+    font-size: 1rem;
+}

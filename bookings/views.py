@@ -117,7 +117,7 @@ class AddBookingView(LoginRequiredMixin, CreateView):
             table_num_seats__gte=party_size
         ))
 
-        # get the booking for that day
+        # get the bookings for that day /
         bookings_on_date = Booking.objects.filter(
             booking_date=date, booking_time=time)
 
