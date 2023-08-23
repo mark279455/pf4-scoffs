@@ -132,79 +132,8 @@ footer {
     margin: auto;
 }
 
-/* bookings app */
-
-/* form */
-/* .form {
-    width: 100%;
-    margin: 3% auto;
-    box-shadow: var(--smal-box-shadow);
-    border-radius: 5px;
-} */
-
-/* booking card  on list bookings view */
-/* .card {
-    background-color: var(--background) !important;
-}
-
-.card-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.custom-card {
-    border: var(--border);
-    background-color: var(--background);
-    color: var(--deftextcolor);
-    display: flex;
-    flex-direction: column;
-    width: 25rem;
-}
-
-.custom-card button {
-    border-style: solid;
-    background-color: var(--deftextcolor);
-    color: var(--off-white);
-}
-
-.card-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.buttondiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.custom-card .buttondiv .editbutton {
-    background-color: var(--deftextcolor);
-}
-
-.custom-card .buttondiv .deletebutton {
-    background-color: var(--background);
-    color: var(--deftextcolor);
-} */
-
-/* confirmation messages - toasts */
-/* .toasts {
-    width: 400px;
-}
-
-.toasts .toast {
-    background: var(--deftextcolor);
-    color: var(--off-white);
-}
-
-.toast-body {
-    font-size: 1rem;
-} */
-
 /* override bootstrap btn-danger */
-/* .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
     background-color: var(--deftextcolor) !important;
     border: none !important;
-} */
+}

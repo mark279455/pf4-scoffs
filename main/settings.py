@@ -111,6 +111,8 @@ TEMPLATES = [
     },
 ]
 
+# CSRF_TRUSTED_ORIGINS = ['https://8000-mark279455-pf4scoffs-ji51fewx7zo.ws-eu104.gitpod.io']
+
 WSGI_APPLICATION = "main.wsgi.application"
 
 # Database
