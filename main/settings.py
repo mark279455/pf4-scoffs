@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ["127.0.0.1", os.environ.get(
     'HEROKU_HOSTNAME'), '8000-mark279455-pf4scoffs-7j4czffsq61.ws-eu103.gitpod.io']
@@ -118,16 +118,16 @@ WSGI_APPLICATION = "main.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# if DEBUG:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         }
-#     }
-# else:
-DATABASES = {
-    "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
@@ -252,3 +252,7 @@ if DEVELOPMENT:
             },
         }
     }
+
+
+print(F"DATABASES = {DATABASES}")
+print(F"DEVELOPMENT = {DEVELOPMENT}")

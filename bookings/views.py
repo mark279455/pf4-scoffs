@@ -112,14 +112,14 @@ class AddBookingView(LoginRequiredMixin, CreateView):
         date = form.cleaned_data['booking_date']
         time = form.cleaned_data['booking_time']
         party_size = form.cleaned_data['booking_party_size']
+        # get the bookings for that day /
+        bookings_on_date = Booking.objects.filter(
+            booking_date=date, booking_time=time)
+
         # get tables big enough for party
         suitable_tables = list(Table.objects.filter(
             table_num_seats__gte=party_size
         ))
-
-        # get the bookings for that day /
-        bookings_on_date = Booking.objects.filter(
-            booking_date=date, booking_time=time)
 
         # find free tables
         for booking in bookings_on_date:

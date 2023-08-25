@@ -20,10 +20,9 @@ class Table(models.Model):
 
 
 class Booking(models.Model):
-    """ model to create amd manage Bookings """
+    """ model for restaurant Bookings """
     cust = models.ForeignKey(
         User, related_name="booking_owner", on_delete=models.CASCADE)
-    # cust_name  = models.CharField(max_length=50, null=False, blank=False)
     cust_name = models.CharField(max_length=50)
     booking_party_size = models.IntegerField(default=2)
     booking_date = models.DateField()
