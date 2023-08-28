@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 
 <div class="container-wrapper">
     <div class="homepage-img">
         <div class="imgwrap">
             {% load random_image %}
-            <img src="{{ MEDIA_URL }}{% random_image %}" alt="restaurant image">
+            <img src="{{ MEDIA_URL }}{% random_image %}" alt="picture of restaurant">
         </div>
     </div>
     <div class="content-wrapper main-column">
         <div class="text-area content">
-            <!-- Title and about us sections -->
+            <!-- welcome section -->
             <h1 class="text-center fw-bolder display-1">Welcome to Scoff's.</h1>
             <div class="text-center fw-bold px-2 pb-3">
                 <p>Our restaurant is a beautifully renovated listed building with high gabled ceilings and a wonderful
@@ -27,42 +28,13 @@
                     Great food and a welcoming atmosphere.
                 </p>
 
-                <!-- Booking and menu buttons -->
-                <!-- <div class="d-grid gap-2 col-6 mb-3 mx-auto"> -->
                 <div>
-                    <button onclick="document.location.href='{% url 'add_booking' %}';" class="btn btn-danger w-20" type="button">Book a Table</button>
+                    <button onclick="document.location.href='{% url 'add_booking' %}';" class="btn btn-danger w-20"
+                        type="button">Book a Table</button>
                 </div>
-
-                <!-- <h2 class="text-center">Find Us</h2> -->
-                <!-- Map -->
-                <!-- <div class="mapouter pb-3">
-                    <div class="gmap_canvas">
-                        <iframe id="gmap_canvas"
-                            src="https://maps.google.com/maps?q=torr%20head&t=&z=13&ie=UTF8&iwloc=&output=embed">
-                        </iframe>
-                    </div> -->
-                <!-- Opening hours -->
-                <!-- <div class="opening text-center form-style">
-                        <p><strong>Lunch Opening Times</strong></p>
-                        <ul>
-                            <li>Monday to Saturday 12pm – 3.45pm</li>
-                            <li>Sunday 12pm - 4pm</li>
-                        </ul>
-                        <p><strong>Dining Opening Times</strong></p>
-                        <ul>
-                            <li>Monday 4pm - 10pm</li>
-                            <li>Tuesday 4pm - 10pm</li>
-                            <li>Wednesday 4pm - 10pm</li>
-                            <li>Thursday 4pm - 10pm</li>
-                            <li>Friday 4pm - 10pm</li>
-                            <li>Saturday 4pm - 10pm</li>
-                            <li>Sunday 4pm - 10pm</li>
-                        </ul>
-                    </div> -->
             </div>
         </div>
     </div>
-</div>
 </div>
 
 {%endblock%}

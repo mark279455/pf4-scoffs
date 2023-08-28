@@ -5,7 +5,7 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <!-- Logo -->
-      <a class="navbar-brand" href="#"><img src="{% static 'images/scoffs_small.webp' %}" alt="Scoffs logo"
+      <a class="navbar-brand" href="#"><img src="{% static 'images/scoffs_small.webp' %}" alt="Scoffs restaurant brand logo"
           class="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav text-end mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {% if url_name == 'home' %}active text-info{% endif %}" aria-current="page"
+            <a class="nav-link {% if url_name == 'home' %}active text-info{% endif %}" aria-current="Active link"
               href="{% url 'home' %}">Home</a>
           </li>
           {% if request.user.is_authenticated %}

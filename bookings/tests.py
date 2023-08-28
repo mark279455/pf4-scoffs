@@ -34,13 +34,6 @@ class TestViews(TestCase):
             booking_time=1
         )
 
-    def tearDown(self):
-        pass
-        # ss = input("tearDown")
-        # Table.objects.delete(table_number=44, capacity=2)
-        # Booking.objects.delete(cust=self.user)
-        # self.user.objects.delete_user(username=self.username)
-
     def test_booking_list(self):
         """ Test List Bookings """
         response = self.client.get('/bookings/list_bookings/')

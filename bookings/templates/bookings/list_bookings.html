@@ -12,6 +12,12 @@
 <p>{{request.user}}</p>
 
 <div class="container mx-0 p-0">
+    {% if request.user.is_staff %}
+    <h1 class="text-center">All Bookings</h1>
+    {% else %}
+    <h1 class="text-center">Your Bookings</h1>
+    {% endif %}
+
     <!-- Searches -->
     {% if request.user.is_staff %}
     <form method='GET' class="d-flex">
