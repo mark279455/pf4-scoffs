@@ -15,8 +15,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav text-end mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {% if url_name == 'home' %}active text-info{% endif %}" aria-current="Active link"
-              href="{% url 'home' %}">Home</a>
+            <a class="nav-link {% if url_name == 'home' %}active text-info{% endif %}" href="{% url 'home' %}">Home</a>
           </li>
           {% if request.user.is_authenticated %}
           <li class="nav-item">
