@@ -111,8 +111,6 @@ TEMPLATES = [
     },
 ]
 
-# CSRF_TRUSTED_ORIGINS = ['https://8000-mark279455-pf4scoffs-ji51fewx7zo.ws-eu104.gitpod.io']
-
 WSGI_APPLICATION = "main.wsgi.application"
 
 # Database
@@ -152,13 +150,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Account setup allauth
-# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
-# ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USERNAME_MIN_LENGTH = 6
 LOGIN_URL = '/accounts/login/'
@@ -169,7 +164,6 @@ if 'DEVELOPMENT' in os.environ:
     DEFAULT_FROM_EMAIL = 'test@test.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    # EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST = 'smtp.ionos.co.uk'
     EMAIL_PORT = 587
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
@@ -194,7 +188,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-# os.path.join(BASE_DIR, 'bookings\static\bookings\css'),
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
@@ -214,10 +207,8 @@ AUTHENTICATION_BACKENDS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # random image
-# RANDOM_IMAGE_DIR = './images/homepage'
-RANDOM_IMAGE_DIR = 'images/homepage'
-RANDOM_IMAGE_EXTENSIONS = ['.webp']
-# ,'.jpg','.jpeg','.png','.gif']
+RANDOM_IMAGE_DIR = './images/homepage'
+RANDOM_IMAGE_EXTENSIONS = ['.webp', '.jpg', '.jpeg', '.png', '.gif']
 
 STORAGES = {
     "staticfiles": {
