@@ -408,6 +408,18 @@ Actual result:
 ---
 
 ## W3 HTML Validator
+
+The following pages were submitted to the W3 HTML Validator (https://validator.w3.org/)
+homepage 
+register
+Logout
+Login
+Make a Booking
+List your Bookings
+Edit Booking
+Delete Booking
+
+
 ## Lighthouse
 ## Wave
 ## Pep8

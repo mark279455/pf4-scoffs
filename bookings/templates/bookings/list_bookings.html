@@ -34,9 +34,12 @@
     {% endif %}
 
     <form method='GET' class="d-flex">
-        <input class="form-control me-2 w-auto p-1 m-1" type='date' name='date' placeholder="Date"
+        <!-- <input class="form-control me-2 w-auto p-1 m-1" type='date' name='date' placeholder="Date"
             aria-label="Search Bookings by date" value='{{ request.GET.date }}' autocomplete="off" class="datepicker"
-            id="datepicker" type="submit"> <button class="btn btn-danger p-1 m-1" type="submit">Search</button>
+            id="datepicker" type="submit"> <button class="btn btn-danger p-1 m-1" type="submit">Search</button> -->
+        <input class="form-control me-2 w-auto p-1 m-1 datepicker" type='date' name='date'
+            aria-label="Search Bookings by date" value='{{ request.GET.date }}' autocomplete="off"
+            id="datepicker"> <button class="btn btn-danger p-1 m-1" type="submit">Search</button>
     </form>
 
     <!-- bookings cards -->

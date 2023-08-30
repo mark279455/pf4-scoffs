@@ -72,9 +72,8 @@ img.logo {
     color: var(--off-white);
 }
 
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show {
-    color: var(--off-white) !important;
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: var(--off-white)!important;
 }
 
 /* Footer */
@@ -133,16 +132,8 @@ footer {
     margin: auto;
 }
 
-/* block title */
-title {
-    font-family: var(--main-font);
-}
-
 /* override bootstrap btn-danger */
-.btn-danger,
-.btn-danger:hover,
-.btn-danger:active,
-.btn-danger:visited {
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
     background-color: var(--deftextcolor) !important;
     border: none !important;
 }

@@ -87,6 +87,6 @@ class BookingForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['booking_date'].widget = forms.widgets.DateInput(
             attrs={
-                'type': 'date', 'placeholder': 'yyyy-mm-dd', 'class': 'form-control'
+                'type': 'date', 'class': 'form-control'
             }
         )
