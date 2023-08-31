@@ -18,7 +18,10 @@
             - [Booking date requested from the past](#booking-date-requested-from-the-past)
         - [Booking cannot be made if the party size is greater than the biggest table](#booking-cannot-be-made-if-the-party-size-is-greater-than-the-biggest-table)
 
-2.  [Industry Tests](#industry-tests)
+
+2.  [Application Responsivity](#application-responsivity)
+
+3.  [Industry Tests](#industry-tests)
     - [HTML Validator](#w3-html-validator)
     - [Lighthouse](#lighthouse)
     - [Wave](#wave)
@@ -403,6 +406,30 @@ Actual result:
 
 ---
 
+## Application Responsivity
+
+    The following pages were tested for responsiveness from 320px upwards, and the application was tested using Chrome, Firefox, Edge and Opera Browsers.
+    
+    Homepage 
+    Register
+    Logout
+    Login
+    Make a Booking
+    List your Bookings
+    Edit Booking
+    Delete Booking
+
+    All pages behaved as designed.
+
+    Test:
+
+        1.  Navigate to required page
+        2.  Open developer tools
+        3.  Shrink screen to 320px
+        4.  Drag the screen width to its maximum size observing the behaviour of the navabar, and the display content.
+
+---
+
 # Industry Tests
 
 ---
@@ -410,16 +437,71 @@ Actual result:
 ## W3 HTML Validator
 
 The following pages were submitted to the W3 HTML Validator (https://validator.w3.org/)
-homepage 
-register
-Logout
-Login
-Make a Booking
-List your Bookings
-Edit Booking
-Delete Booking
+    
+    Homepage 
+    Register
+    Logout
+    Login
+    Make a Booking
+    List your Bookings
+    Edit Booking
+    Delete Booking
 
+    These were corrected of minor errors
+
+---
 
 ## Lighthouse
+
+** Gareth **
+![](documentation/media/lighthouse.png)
+
+
 ## Wave
+
+    The following pages were tested using Wave.
+
+    Home page:
+        No Errors or warnings listed here.
+    Logout:
+        No Errors or warnings listed here.
+    Login:
+        No Errors or warnings listed here.
+    Book a Table:
+        No Errors or warnings listed here.
+    List your Bookings:
+        No Errors or warnings listed here.
+    Register:
+        The 'sign-in' link reports a redundant link on this page - there isnt one
+    Edit Booking:
+        No Errors or warnings listed here.
+    Delete Booking:
+        No Errors or warnings listed here.
+
+---
+
 ## Pep8
+
+    Using pycodestyle, all python files were checked for pep8 compliance, and the necessary corrections made
+
+    .\bookings\admin.py
+    .\bookings\apps.py
+    .\bookings\forms.py
+    .\bookings\models.py
+    .\bookings\tests.py
+    .\bookings\urls.py
+    .\bookings\views.py
+    .\bookings\widgets.py
+    .\home\admin.py
+    .\home\apps.py
+    .\home\models.py
+    .\home\tests.py
+    .\home\urls.py
+    .\home\views.py
+    .\main\asgi.py
+    .\main\settings.py
+    .\main\urls.py
+    .\main\wsgi.py
+
+---
+

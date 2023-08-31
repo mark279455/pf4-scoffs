@@ -151,3 +151,8 @@ footer {
 .toast-body {
     font-size: 1rem;
 }
+
+/* sign-in sign-up links */
+.signin {
+    color: navy !important;
+}
