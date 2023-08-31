@@ -18,10 +18,11 @@
             - [Booking date requested from the past](#booking-date-requested-from-the-past)
         - [Booking cannot be made if the party size is greater than the biggest table](#booking-cannot-be-made-if-the-party-size-is-greater-than-the-biggest-table)
 
+2.  [Unit Tests](#unit-tests)
 
-2.  [Application Responsivity](#application-responsivity)
+3.  [Application Responsivity](#application-responsiveness)
 
-3.  [Industry Tests](#industry-tests)
+4.  [Industry Tests](#industry-tests)
     - [HTML Validator](#w3-html-validator)
     - [Lighthouse](#lighthouse)
     - [Wave](#wave)
@@ -406,7 +407,17 @@ Actual result:
 
 ---
 
-## Application Responsivity
+## Unit Tests
+
+    Unit tests are defined in ./bookings/tests.py
+
+    Output:
+
+![](documentation/media/test-output.png)
+
+---
+
+## Application Responsiveness
 
     The following pages were tested for responsiveness from 320px upwards, and the application was tested using Chrome, Firefox, Edge and Opera Browsers.
     
@@ -426,7 +437,7 @@ Actual result:
         1.  Navigate to required page
         2.  Open developer tools
         3.  Shrink screen to 320px
-        4.  Drag the screen width to its maximum size observing the behaviour of the navabar, and the display content.
+        4.  Drag the screen width to its maximum size observing the behaviour of the navbar, and the display content.
 
 ---
 
@@ -453,9 +464,22 @@ The following pages were submitted to the W3 HTML Validator (https://validator.w
 
 ## Lighthouse
 
-** Gareth **
+The following pages were submitted to Lighthouse tests.
+    
+    Homepage 
+    Register
+    Logout
+    Login
+    Make a Booking
+    List your Bookings
+    Edit Booking
+    Delete Booking
+
+    The results were as below.
+
 ![](documentation/media/lighthouse.png)
 
+---
 
 ## Wave
 
@@ -472,7 +496,11 @@ The following pages were submitted to the W3 HTML Validator (https://validator.w
     List your Bookings:
         No Errors or warnings listed here.
     Register:
-        The 'sign-in' link reports a redundant link on this page - there isnt one
+        The 'sign-in' link reports a redundant link on this page.
+        Presumably the complaint is that the duplicate is:
+                    navbar: Login link
+            body:   "Already have an account? Then please sign in." link.
+        This is by design.
     Edit Booking:
         No Errors or warnings listed here.
     Delete Booking:
