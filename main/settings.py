@@ -129,8 +129,8 @@ else:
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
-if TEST:
-    print(f"TEST DATABASE: {DATABASES}")
+print(f"DATABASE: {DATABASES}")
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
