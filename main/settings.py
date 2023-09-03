@@ -116,18 +116,18 @@ WSGI_APPLICATION = "main.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-TEST = os.environ.get("RUN_TESTS")
-if TEST:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-else:
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
+# TEST = os.environ.get("RUN_TESTS")
+# if TEST:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": BASE_DIR / "db.sqlite3",
+#         }
+#     }
+# else:
+DATABASES = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 print(f"DATABASE: {DATABASES}")
 
@@ -217,36 +217,3 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
-if DEBUG:
-    LOGGING = {
-        "version": 1,
-        "disable_existing_loggers": False,
-        "formatters": {
-            "verbose": {
-                "format": "[%(asctime)s] %(levelname)s \
-                    [%(name)s:%(lineno)s] %(message)s",
-                "datefmt": "%d/%b/%Y %H:%M:%S",
-            },
-            "simple": {"format": "%(levelname)s %(message)s"},
-        },
-        "handlers": {
-            "file": {
-                "level": "DEBUG",
-                "class": "logging.FileHandler",
-                "filename": "mysite.log",
-                "formatter": "verbose",
-            },
-        },
-        "loggers": {
-            "django": {
-                "handlers": ["file"],
-                "propagate": True,
-                "level": "DEBUG",
-            },
-            "MYAPP": {
-                "handlers": ["file"],
-                "level": "DEBUG",
-            },
-        },
-    }

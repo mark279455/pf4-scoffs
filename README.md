@@ -28,6 +28,8 @@ coffs customers can register using an email address and password, and may then r
  - [Technologies Used](#technologies-used)
    - [Django / python modules used](#django-python-modules-used)
    - [Git / GitHub](#git-github)
+
+- [Credits](#credits)
  ---
 
 ### Goals
@@ -372,6 +374,8 @@ coffs customers can register using an email address and password, and may then r
         Web page styling
    - Bootstrap        
         Web page styling
+   - Javascript
+        Used by Bootstrap
    - VS-Code
         Microsoft Integrated Development Environment - used to code the project
    - Django
@@ -458,5 +462,28 @@ coffs customers can register using an email address and password, and may then r
 
  - whitenoise==6.5.0        -   serves static files
 
+ - black==23.7.0        -   This was used for code formatting, and is not part of the project
 
 ## Git Github
+
+- Git
+    - Git and GitHub were used for Verion Control.
+
+    
+    The following instructions were used.
+
+     - git add [filename] - or [.]
+        - add files to staging
+
+     - git commit -m "commit message"
+        - commit changes and label them
+
+     - pit push
+        - push changes to repository
+
+---
+
+## Credits
+
+    Thanks to Gareth McGirr my mentor and his wife Daisy for her Youtube video 
+[Django Recipe Sharing Tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
